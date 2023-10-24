@@ -1,0 +1,50 @@
+html {
+  font-family: Consolas, monaco, monospace;
+}
+h1 {
+  text-align: center;
+}
+#game-board {
+  width: 600px;
+  height: 400px;
+  border: 1px solid black;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background-color: blue;
+  background: url('./img/fallingHearts-changes.png') repeat;
+  background-size: contain;
+  animation: moveBackground 10s infinite linear;
+}
+@keyframes moveBackground {
+  from { background-position: 0 0; }
+  to { background-position: 0 100%; }
+
+}
+
+#player {
+  width: 80px;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  /* background-color: blue; */
+  background: url('./img/archer.png') no-repeat center / contain;
+}
+
+.bullet {
+  position: absolute;
+  transform: translate(-50%);
+  width: 8px;
+  height: 12px;
+  background: url('./img/bullet.png') no-repeat center / contain;
+}
+
+.enemy {
+  width: 60px;
+  height: 40px;
+  position: absolute;
+  background-color: yellowgreen;
+  background: url('./img/heart-pngwing-com.png') no-repeat center / contain;
+}
