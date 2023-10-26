@@ -4,6 +4,17 @@ html {
 h1 {
   text-align: center;
 }
+
+:root {
+  --bg-size: 200px;
+  --speed: 4;
+}
+
+@keyframes moveBackground {
+  from { background-position-y: 0; }
+  to { background-position-y: calc(-1 * var(--speed) * var(--bg-size)); }
+}
+
 #game-board {
   width: 600px;
   height: 400px;
@@ -11,15 +22,10 @@ h1 {
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-  background-color: blue;
-  background: url('./img/fallingHearts-changes.png') repeat;
-  background-size: contain;
+  background: url('./img/fallingHearts-crop-pattern.png') repeat; /*domyślnie jest repeat*/
+  background-size: auto var(--bg-size);
+  background-position-x: 80px;
   animation: moveBackground 10s infinite linear;
-}
-@keyframes moveBackground {
-  from { background-position: 0 0; }
-  to { background-position: 0 100%; }
-
 }
 
 #player {

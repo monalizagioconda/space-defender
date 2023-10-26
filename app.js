@@ -73,7 +73,7 @@ const checkBulletCollision = (bullet) => {
 }
 
 const moveBullets = () => {
-  for (let i = 0; i < bullets.length; i++) {
+  for (let i = bullets.length - 1; i >= 0 ; i--) {
     const bullet = bullets[i];
 
   // przesuń pocisk
@@ -94,9 +94,11 @@ const moveBullets = () => {
 const createEnemy = () => {
   //twórz statki losowo (raz tak, raz nie)
   const shouldCreate = Math.round(Math.random());
-  if (!shouldCreate) return;
 
-  // zdefiniuj statek
+  if (!shouldCreate) return  // early exit, return powoduje przerwanie wykonania dalszej części funkcji.
+  // If should not create then return.
+
+  // zdefiniuj statek  (To co na dole jest poza if-em)
   const enemy = document.createElement('div');
   enemy.className = 'enemy';
   enemy.style.top = -40 + 'px';
@@ -108,10 +110,10 @@ const createEnemy = () => {
 }
 
 const moveEnemies = () => {
-  for (let i = 0; i < enemies.length; i++) {
+  for (let i = enemies.length - 1; i >= 0 ; i--) {
     const enemy = enemies[i];
     // przesuń statek w dół
-    enemy.style.top = `${enemy.offsetTop + 5}px`;
+    enemy.style.top = `${enemy.offsetTop + 1}px`;
 
     // usuwaj statek gdy wyjedzie poza mapę
     if (enemy.offsetTop >= boardElement.offsetHeight) {
@@ -124,5 +126,5 @@ const moveEnemies = () => {
 
 // interwały
 setInterval(moveBullets, 50);
-setInterval(moveEnemies, 150);
+setInterval(moveEnemies, 30);
 setInterval(createEnemy, 1000);
